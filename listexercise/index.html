@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+    <style>
+        ul{
+            margin: 0 auto;
+            padding: 0;
+            list-style: none;
+        }
+        li{
+            margin-bottom: 10px;
+        }
+        span{
+            background: #ddd;
+            padding: 5px 8px;
+            border-radius: 3px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <form action="" id="listForm">
+        <input id="listInput" type="text">
+        <button type="submit">Add into List</button>
+    </form>
+    <ul id="list">
+        
+    </ul>
+    
+    <script>
+        const form = document.getElementById('listForm');
+        const input = document.getElementById('listInput');
+        const ul = document.getElementById('list');
+        
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            if (input.value !== '') {
+                const li = document.createElement('li');
+                li.appendChild(document.createTextNode(input.value));
+                
+                const span =  document.createElement('span');
+                span.appendChild(document.createTextNode("×"));
+                li.appendChild(span);
+                
+                ul.appendChild(li);
+                
+                input.value = '';
+            }
+        });
+        
+        ul.addEventListener('click', e => {
+            if (e.target.tagName === 'SPAN'){
+                e.target.parentElement.remove();
+                
+            }
+        });
+    </script>
+</body>
+</html>

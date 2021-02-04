@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Number Facts</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        input {
+            padding-top: 5px !important;
+        }
+
+        #fact {
+            display: none;
+        }
+
+    </style>
+</head>
+
+<body class="bg-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="card bg-primary text-light mt-3 p-4">
+                    <h1 class="text-center">Number Facts</h1>
+                    <p>Enter a number and get a random fact</p>
+                    <input type="number" class="form-control form-control-bg" placeholder="Enter any number..." id="numberInput">
+                    <div id="fact" class="card-body">
+                        <h4 class="card-title">
+                            Number Fact
+                        </h4>
+                        <p id="factText" class="tcard-tex"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        let fact = document.getElementById('fact'),
+            factText = document.getElementById('factText'),
+            numberInput = document.getElementById('numberInput');
+
+        numberInput.addEventListener('input', getFactFetch);
+
+//        function getFactAjax() {
+//            let number = numberInput.value;
+//            
+//            let xhr = new XMLHttpRequest();
+//            xhr.open('GET', 'http://numbersapi.com/' + number);
+//            xhr.onload = function() {
+//                if (this.status == 200 && number != '') {
+//                    fact.style.display = 'block';
+//                    factText.innerHTML = this.responseText;
+//                }
+//            };
+//            xhr.send();
+//        }
+
+        function getFactFetch() {
+            let number = numberInput.value;
+            if (number != '') {
+                fact.style.display = 'block';
+                if (factText.classList.contains('text-warning')) 
+                    factText.classList.remove('text-warning');
+                factText.innerText = 'Processing Request...';
+            } else {
+                fact.style.display = 'none';
+            }
+            fetch('http://numbersapi.com/' + number)
+                .then(response => {
+                    return response.text();
+                })
+                .then(data => {
+                    if (number != '') {
+                        factText.innerText = data;
+                    }
+                })
+                .catch(() => {
+                    factText.classList.add('text-warning');
+                    factText.innerText = 'Failed to load Resource!';
+                });
+            
+        }
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Zip Codes of Bangladesh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.0/css/bulma.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .icon-remove,
+        .icon-check{
+            display: none;
+        }
+        .fa.fa-remove{
+            color: #cc0f35;
+        }
+
+        .fa.fa-check{
+            color: #48c774;
+        }
+
+        footer.container{
+            background-color: #363636;
+            text-align: center;
+            padding: 1rem;
+            font-size: 14px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            color: #ddd;
+        }
+        footer.container p a:hover{
+            color: #6294e6;
+        }
+    </style>
+</head>
+<body>
+    
+    <section class="hero hero-body is-dark container">
+        <h1 class="title">Zip Code Info of Bangladesh</h1>
+        <h2>Enter zip code from 1000 to 9461 to get the information</h2>
+        <form id="zipForm">
+            <div class="field">
+                <div class="control has-icons-left has-icons-right">
+                    <input type="number" class="input zip" placeholder="Enter Zipcode here" id="inputZip">
+                    <span class="icon is-small is-left"><i class="fa fa-map-pin"></i></span>
+                    <span class="icon is-small is-right icon-check"><i class="fa fa-check"></i></span>
+                    <span class="icon is-small is-right icon-remove"><i class="fa fa-remove"></i></span>
+                </div>
+            </div>
+        </form>
+        
+    </section>
+    
+    <hr>
+    <div class="container">
+        <div id="output">
+            
+        </div>
+    </div>
+    <footer class="container">
+        <p class="author">Created By: <a href="https://web.facebook.com/sujanm.cse5.bu/">Sujan Mridha</a></p>
+        <p class="credit">Courtesy: <a href="https://www.youtube.com/channel/UC29ju8bIPH5as8OGnQzwJyA">Traversy Media</a></p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
